@@ -24,7 +24,6 @@ function pickRandomWord() {
 
 function insertText(word) {
     document.getElementById('vards').innerHTML = word;
-    console.log("Added text!");
 }
 
 function changeTableSize() {
@@ -42,8 +41,6 @@ function doSetup() {
     changeTableSize();
     setHighScore(score);
     index = hash(word);
-    console.log('Table size is: ' + tableSize);
-    console.log('Index is: ' + index);
 }
 
 
@@ -52,15 +49,12 @@ function hash(word) {
     for (const c of word) {
         sum += c.charCodeAt(0);
     }
-    console.log('Sum is: ' + sum);
     return sum % tableSize;
 }
 
 function checkAnswer() {
     var answer = document.getElementById('atbilde').value
-    console.log('Answer: ' + answer + ' index: ' + index);
     var value = answer == index;
-    console.log('The answer is: ' + value);
 
     var f = document.getElementById('correct');
     if (value) {
