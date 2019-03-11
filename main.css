@@ -1,0 +1,23 @@
+#vards, #tableSize {
+    font-weight: bold;
+    font-size: xx-large ;
+}
+.game {
+    width: 50%;
+    float: left;
+    align-items: center;
+    justify-content: center;
+}
+
+.game h1,h2,.info,.answer,p {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    align-content: center;
+    text-align: center;
+}
+.asciitable {
+    width: 50%;
+    float:left;
+}
+
