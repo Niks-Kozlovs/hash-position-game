@@ -66,8 +66,10 @@ function checkAnswer() {
     if (value) {
         score++;
         f.innerHTML = 'Correct';
+        f.style.color = 'Green';
     } else {
         f.innerHTML = 'Wrong';
+        f.style.color = 'Red';
     }
 
     //Restart
