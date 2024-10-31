@@ -6,35 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="main.css">
-    <title>Hash table spēle</title>
+    <title>Hash Table Game</title>
 </head>
 
 <body>
     <div class="game">
-        <h1>Hash table spēle</h1>
-        <h2>Iegūsti indeksu no vārda izmantojot vienkāršu hashing algoritmu!</h2>
+        <h1>Hash Table Game</h1>
+        <h2>Get the index of a word using a simple hashing algorithm!</h2>
+
+        <details class="instructions">
+            <summary>Instructions</summary>
+            <ul>
+                <li>Each round, you’re given a word and a table size.</li>
+                <li>To calculate the hash index of the word, use this formula:</li>
+            </ul>
+            <p class="formula">
+                <code>Hash Index = (Sum of ASCII values of each character in the word) % Table Size</code></p>
+            <ul>
+                <li>Look up the ASCII values of each character in the word using the ASCII table.</li>
+                <li>Add up all the ASCII values.</li>
+                <li>Take the sum and divide it by the table size; the remainder is the hash index.</li>
+                <li>Enter your calculated answer and press "Check" to see if you’re correct!</li>
+            </ul>
+        </details>
+
         <div class="info">
-            <p>Vārds ir: <span id="vards"></span> un tabulas izmērs ir <span id="tableSize"></span></p>
+            <p>The word is: <span id="vards"></span> and the table size is <span id="tableSize"></span></p>
         </div>
         <div class="answer">
-            Atbilde: <br>
+            Answer: <br>
             <input type="text" id="atbilde" autocomplete="off">
-            <input type="button" value="Pārbaudīt" onclick="checkAnswer()">
+            <button id="checkButton">Check</button>
         </div>
         <p id="score">Score: </p>
         <p id="correct"></p>
     </div>
 
-
-    </div>
-    <div class="asciitable">
-        <img src="./img/ascii_table.gif" alt="asciitable">
-    </div>
+    <img src="./img/ascii_table.gif" alt="ASCII Table">
 
     <script src="logic.js"></script>
-    <script type="text/javascript">
-        doSetup()
-    </script>
 </body>
 
 </html>

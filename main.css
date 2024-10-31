@@ -1,27 +1,120 @@
-#vards, #tableSize {
-    font-weight: bold;
-    font-size: xx-large ;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
-.game {
-    width: 50%;
-    float: left;
-    align-items: center;
+
+body {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
-.game h1,h2,.info,.answer,p {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    align-content: center;
+.game {
+    max-width: 400px;
+    margin: 20px;
     text-align: center;
 }
-.asciitable {
-    width: 50%;
-    float:left;
-}
-#correct {
-    font-weight: bold;
-    font-size: xx-large;
+
+.game h1 {
+    color: #333;
+    font-size: 2em;
 }
 
+.game h2 {
+    color: #666;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#vards,
+#tableSize {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.answer input[type="text"],
+.answer button {
+    font-size: 1em;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.answer input[type="text"] {
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.answer button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.answer button:hover {
+    background-color: #45a049;
+}
+
+#score {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 15px;
+}
+
+#correct {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.instructions {
+    width: 80%;
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.instructions summary {
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    color: #333;
+    padding: 10px;
+}
+
+.instructions ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.instructions ul li {
+    margin: 8px 0;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.formula code {
+    display: block;
+    background-color: #eee;
+    padding: 8px;
+    font-family: monospace;
+    font-size: 0.95em;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #333;
+    text-align: center;
+}

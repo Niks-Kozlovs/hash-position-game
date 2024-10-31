@@ -1,94 +1,65 @@
-var numberOfWords = 25;
-var tableSize;
-var index;
-var score = 0;
+let tableSize = 0;
+let index = 0;
+let score = 0;
 
-var words = new BuildArray(numberOfWords);
-var tableSize = 0;
-
-words[1] = 'Smoke';
-words[2] = 'Taxi';
-words[3] = 'Harbor';
-words[4] = 'Obstacle';
-words[5] = 'Rally';
-words[6] = 'Appreciate';
-words[7] = 'Egg';
-words[8] = 'Other';
-words[9] = 'Asylum';
-words[10] = 'Competition';
-words[11] = 'Inject';
-words[12] = 'Nun';
-words[13] = 'Fox';
-words[14] = 'Visit';
-words[15] = 'Provide';
-words[16] = 'Reinforce';
-words[17] = 'Wage';
-words[18] = 'Mind';
-words[19] = 'Station';
-words[20] = 'Closed';
-words[21] = 'Prosecution';
-words[22] = 'Behead';
-words[23] = 'Blank';
-words[24] = 'Anxiety';
-words[25] = 'Unlike';
-
-function BuildArray(size) {
-    this.length = size
-    for (var i = 1; i <= size; i++) {
-        this[i] = null
+async function getRandomWord() {
+    try {
+        const response = await fetch('https://random-word-api.herokuapp.com/word');
+        if (!response.ok) throw new Error('Failed to fetch word');
+        const words = await response.json();
+        return words[0];  // The API returns an array with a single random word
+    } catch (error) {
+        console.error('Error fetching word:', error);
+        return 'Fallback';  // Fallback word in case of fetch error
     }
-    return this
 }
 
-function pickRandomWord() {
-    return words[Math.ceil(Math.random() * numberOfWords)];
-}
-
-function insertText(word) {
-    document.getElementById('vards').innerHTML = word;
+function updateTextContent(id, text) {
+    document.getElementById(id).textContent = text;
 }
 
 function changeTableSize() {
     tableSize = Math.ceil(Math.random() * 100);
-    document.getElementById('tableSize').innerHTML = tableSize;
+    updateTextContent('tableSize', tableSize);
 }
 
 function setHighScore(score) {
-    document.getElementById('score').innerHTML = 'Score: ' + score;
+    updateTextContent('score', `Score: ${score}`);
 }
 
-function doSetup() {
-    word = pickRandomWord();
-    insertText(word);
+async function doSetup() {
+    const word = await getRandomWord();
+    updateTextContent('vards', word);
     changeTableSize();
     setHighScore(score);
     index = hash(word);
 }
 
-
 function hash(word) {
-    var sum = 0;
-    for (const c of word) {
-        sum += c.charCodeAt(0);
-    }
-    return sum % tableSize;
+    return [...word].reduce((sum, c) => sum + c.charCodeAt(0), 0) % tableSize;
 }
 
 function checkAnswer() {
-    var answer = document.getElementById('atbilde').value
-    var value = answer == index;
+    const answer = parseInt(document.getElementById('atbilde').value, 10);
+    const correctElement = document.getElementById('correct');
 
-    var f = document.getElementById('correct');
-    if (value) {
+    if (answer === index) {
         score++;
-        f.innerHTML = 'Correct';
-        f.style.color = 'Green';
+        correctElement.textContent = 'Correct!';
+        correctElement.style.color = 'green';
     } else {
-        f.innerHTML = 'Wrong';
-        f.style.color = 'Red';
+        correctElement.textContent = 'Wrong!';
+        correctElement.style.color = 'red';
     }
 
-    //Restart
-
+    setHighScore(score);
+    document.getElementById('atbilde').value = '';
     doSetup();
 }
+
+document.getElementById('checkButton').addEventListener('click', checkAnswer);
+document.getElementById('atbilde').addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') checkAnswer();
+});
+
+document.addEventListener('DOMContentLoaded', doSetup);
