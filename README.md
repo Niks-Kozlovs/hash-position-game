@@ -41,7 +41,9 @@
 
 ## About The Project
 
-<video src='img/demo.mp4' ></video>
+https://github.com/user-attachments/assets/c16e3f75-76f9-476b-956f-bba86bcd8340
+
+
 
 This project is an educational game designed to help users learn about hash tables and ASCII values. Players calculate the hash index of given words using a simple hash formula, enhancing their understanding of how hashing works in data structures.
 
