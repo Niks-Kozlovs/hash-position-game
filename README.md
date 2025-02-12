@@ -86,7 +86,7 @@ Any modern web browser (such as Chrome, Firefox, Edge, or Safari) is required to
 1.  Clone the repo:
 
     ```sh
-    git clone https://github.com/your-username/your-repo.git
+    git clone github.com/Niks-Kozlovs/hash-position-game.git
     ```
 2. Navigate to the project folder:
     ```sh
